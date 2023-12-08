@@ -12,8 +12,9 @@ def get_data(place, days=None, option=None):
     filtered_data = filtered_data[0:nr_value]
     if option == "Temperature":
         filtered_data = [dict["main"]["temp"] for dict in filtered_data]
-    if option == "Sky"
+    if option == "Sky":
+        filtered_data = [dict["weather"][0]["main"] for dict in filtered_data]
     return filtered_data
 
 if __name__=="__main__":
-    print(get_data(place="Tokyo"))
+    print(get_data(place="Tokyo", days=3, option="Temperature"))
